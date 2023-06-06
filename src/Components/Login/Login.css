@@ -1,0 +1,39 @@
+.btn-log-in {
+    --color: #0077ff;
+    font-family: inherit;
+    display: inline-block;
+    line-height: 2.5em;
+    overflow: hidden;
+    margin: 20px;
+    font-size: 17px;
+    z-index: 1;
+    color: var(--color);
+    border: 2px solid var(--color);
+    border-radius: 6px;
+    position: relative;
+  }
+  
+  .btn-log-in::before {
+    position: absolute;
+    content: "";
+    background: var(--color);
+    width: 700px;
+    height: 100px;
+    z-index: -1;
+    border-radius: 50%;
+  }
+  
+  .btn-log-in:hover {
+    color: white;
+  }
+  
+  .btn-log-in:before {
+    top: 100%;
+    left: 100%;
+    transition: .3s all;
+  }
+  
+  .btn-log-in:hover::before {
+    top: -30px;
+    left: -30px;
+  }
