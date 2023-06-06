@@ -5,7 +5,7 @@ const Header = () => {
 
     const navItems = <>
 
-        <Link><li>Home</li></Link>
+        <Link to="/"><li>Home</li></Link>
         <Link><li>Instructors</li></Link>
         <Link><li>Classes</li></Link>
         <Link><li>Dashboard</li></Link>
@@ -16,7 +16,7 @@ const Header = () => {
     return (
 
 
-        <div className="navbar bg-black text-white max-w-screen-xl">
+        <div className="navbar bg-black bg-opacity-50 text-white max-w-screen-xl fixed z-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -41,12 +41,23 @@ const Header = () => {
 
                 </ul>
             </div>
+
+            {/* Avater, Logout, Logins */}
             <div className="navbar-end">
-                <div className="avatar">
-                    <div className="w-12 rounded-full">
-                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </div>
+
+                <div className="dropdown dropdown-end">
+                    <label tabIndex={0}>
+                        <div className="avatar">
+                            <div className="w-12 rounded-full">
+                                <img src="https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                            </div>
+                        </div>
+                    </label>
+                    <ul tabIndex={0} className="text-black dropdown-content menu p-2 shadow bg-base-100 w-24">
+                        <li><a>Log Out</a></li>
+                    </ul>
                 </div>
+
             </div>
         </div>
     );
