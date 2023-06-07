@@ -1,22 +1,21 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 const useSports = () => {
 
-    const [sport, setSport] = useState([]);
+    const [classes, setClasses] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect (
+    useEffect(() => {
+
         fetch('sports.json')
             .then(res => res.json())
             .then(data => {
-                
-                setSport(data)
+
+                setClasses(data);
                 setLoading(false)
-            }),
-        [])
-
-        return [sport, loading]
-
-} 
+            })
+    }, [])
+    return [classes, loading]
+}
 
 export default useSports;

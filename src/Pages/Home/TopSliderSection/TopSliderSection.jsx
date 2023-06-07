@@ -1,6 +1,5 @@
 import React from 'react';
 import AwesomeSlider from 'react-awesome-slider';
-import CoreStyles from 'react-awesome-slider/src/core/styles.scss';
 import 'react-awesome-slider/dist/styles.css';
 
 const TopSliderSection = () => {
@@ -25,9 +24,7 @@ const TopSliderSection = () => {
 
             {/* TODO: TEXT  */}
 
-            <div>
-                <h1>Hello</h1>
-            </div>
+            
 
 
         </div>

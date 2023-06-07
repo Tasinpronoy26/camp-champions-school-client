@@ -1,7 +1,7 @@
 [
     {
-        "class_name": "Yoga",
-        "class_image": "yoga.jpg",
+        "class_name": "Cricket",
+        "class_image": "https://images.pexels.com/photos/3601184/pexels-photo-3601184.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "instructor_name": "John Smith",
         "instructor_image": "john_smith.jpg",
         "instructor_email": "johnsmith@example.com",
@@ -11,7 +11,7 @@
     },
     {
         "class_name": "Tennis",
-        "class_image": "tennis.jpg",
+        "class_image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "instructor_name": "Sarah Johnson",
         "instructor_image": "sarah_johnson.jpg",
         "instructor_email": "sarahjohnson@example.com",
@@ -21,7 +21,7 @@
     },
     {
         "class_name": "Basketball",
-        "class_image": "basketball.jpg",
+        "class_image": "https://images.pexels.com/photos/3818667/pexels-photo-3818667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "instructor_name": "Michael Anderson",
         "instructor_image": "michael_anderson.jpg",
         "instructor_email": "michaelanderson@example.com",
@@ -31,7 +31,7 @@
     },
     {
         "class_name": "Swimming",
-        "class_image": "swimming.jpg",
+        "class_image": "https://images.pexels.com/photos/3672642/pexels-photo-3672642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "instructor_name": "Emily Wilson",
         "instructor_image": "emily_wilson.jpg",
         "instructor_email": "emilywilson@example.com",
@@ -41,7 +41,7 @@
     },
     {
         "class_name": "Golf",
-        "class_image": "golf.jpg",
+        "class_image": "https://images.pexels.com/photos/2828723/pexels-photo-2828723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "instructor_name": "David Thompson",
         "instructor_image": "david_thompson.jpg",
         "instructor_email": "davidthompson@example.com",
@@ -51,7 +51,7 @@
     },
     {
         "class_name": "Soccer",
-        "class_image": "soccer.jpg",
+        "class_image": "https://images.pexels.com/photos/15874987/pexels-photo-15874987/free-photo-of-boys-playing-football.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "instructor_name": "Jessica Miller",
         "instructor_image": "jessica_miller.jpg",
         "instructor_email": "jessicamiller@example.com",
@@ -61,7 +61,7 @@
     },
     {
         "class_name": "Boxing",
-        "class_image": "boxing.jpg",
+        "class_image": "https://images.pexels.com/photos/4752871/pexels-photo-4752871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "instructor_name": "Mark Davis",
         "instructor_image": "mark_davis.jpg",
         "instructor_email": "markdavis@example.com",
@@ -71,7 +71,7 @@
     },
     {
         "class_name": "Dance",
-        "class_image": "dance.jpg",
+        "class_image": "https://images.pexels.com/photos/8422096/pexels-photo-8422096.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "instructor_name": "Sophia Lee",
         "instructor_image": "sophia_lee.jpg",
         "instructor_email": "sophialee@example.com",
