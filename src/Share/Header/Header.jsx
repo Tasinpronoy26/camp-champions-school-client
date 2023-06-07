@@ -69,6 +69,7 @@ const Header = () => {
                 </ul>
             </div>
 
+
             {/* Avater, Logout, Logins */}
             <div className="navbar-end">
 
@@ -77,7 +78,7 @@ const Header = () => {
                         <label tabIndex={0}>
                             <div className="avatar">
                                 <div className="w-12 rounded-full">
-                                    <img src="https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                                    <img src={user.photoURL} alt="" />
                                 </div>
                             </div>
                         </label>

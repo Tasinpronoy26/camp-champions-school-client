@@ -5,10 +5,11 @@ import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from "react-icons/ai";
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Signup = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, createUSerWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
 
 
@@ -36,7 +37,7 @@ const Signup = () => {
                     console.log(user);
                     Swal.fire({
                         title: 'Successfully created!',
-                        icon: 'success',      
+                        icon: 'success',
                     })
 
                     form.reset();
@@ -46,10 +47,10 @@ const Signup = () => {
 
                         text: error,
                         icon: 'error',
-                        
-                      })
+
+                    })
                 })
-                navigate('/');
+            navigate('/');
         }
         else {
 
@@ -57,10 +58,42 @@ const Signup = () => {
                 title: 'warning!',
                 text: 'Password not matched',
                 icon: 'warning',
-                
+
             })
         }
 
+
+    }
+
+
+    //GOOGLE
+
+    const provider = new GoogleAuthProvider();
+    const handleGoogle = () => {
+
+        createUSerWithGoogle(provider)
+            .then(result => {
+
+                const user = result.user;
+                if (user) {
+
+                    Swal.fire({
+                        title: 'Successfully log in!!',
+                        icon: 'success'
+
+                    })
+                }
+                navigate('/');
+                console.log(result)
+            })
+            .catch(error => {
+
+                Swal.fire({
+                    title: (error),
+                    icon: 'error'
+
+                })
+            })
 
     }
 
@@ -122,7 +155,7 @@ const Signup = () => {
 
                 <div className='mx-16 md:mt-64 md:mb-16 '>
 
-                    <button className="btn btn-wide"><FcGoogle></FcGoogle></button>
+                    <button onClick={handleGoogle} className="btn btn-wide"><FcGoogle></FcGoogle></button>
                     <button className="btn btn-wide mt-10 mb-10"><AiFillGithub></AiFillGithub></button>
 
                 </div>
