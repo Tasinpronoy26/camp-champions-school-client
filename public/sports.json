@@ -1,0 +1,82 @@
+[
+    {
+        "class_name": "Yoga",
+        "class_image": "yoga.jpg",
+        "instructor_name": "John Smith",
+        "instructor_image": "john_smith.jpg",
+        "instructor_email": "johnsmith@example.com",
+        "available_seat": 15.0,
+        "total_students": 10,
+        "price": 25.0
+    },
+    {
+        "class_name": "Tennis",
+        "class_image": "tennis.jpg",
+        "instructor_name": "Sarah Johnson",
+        "instructor_image": "sarah_johnson.jpg",
+        "instructor_email": "sarahjohnson@example.com",
+        "available_seat": 10.0,
+        "total_students": 7,
+        "price": 35.0
+    },
+    {
+        "class_name": "Basketball",
+        "class_image": "basketball.jpg",
+        "instructor_name": "Michael Anderson",
+        "instructor_image": "michael_anderson.jpg",
+        "instructor_email": "michaelanderson@example.com",
+        "available_seat": 12.0,
+        "total_students": 9,
+        "price": 30.0
+    },
+    {
+        "class_name": "Swimming",
+        "class_image": "swimming.jpg",
+        "instructor_name": "Emily Wilson",
+        "instructor_image": "emily_wilson.jpg",
+        "instructor_email": "emilywilson@example.com",
+        "available_seat": 8.0,
+        "total_students": 6,
+        "price": 40.0
+    },
+    {
+        "class_name": "Golf",
+        "class_image": "golf.jpg",
+        "instructor_name": "David Thompson",
+        "instructor_image": "david_thompson.jpg",
+        "instructor_email": "davidthompson@example.com",
+        "available_seat": 5.0,
+        "total_students": 3,
+        "price": 50.0
+    },
+    {
+        "class_name": "Soccer",
+        "class_image": "soccer.jpg",
+        "instructor_name": "Jessica Miller",
+        "instructor_image": "jessica_miller.jpg",
+        "instructor_email": "jessicamiller@example.com",
+        "available_seat": 20.0,
+        "total_students": 15,
+        "price": 20.0
+    },
+    {
+        "class_name": "Boxing",
+        "class_image": "boxing.jpg",
+        "instructor_name": "Mark Davis",
+        "instructor_image": "mark_davis.jpg",
+        "instructor_email": "markdavis@example.com",
+        "available_seat": 7.0,
+        "total_students": 4,
+        "price": 45.0
+    },
+    {
+        "class_name": "Dance",
+        "class_image": "dance.jpg",
+        "instructor_name": "Sophia Lee",
+        "instructor_image": "sophia_lee.jpg",
+        "instructor_email": "sophialee@example.com",
+        "available_seat": 12.0,
+        "total_students": 8,
+        "price": 30.0
+    }
+]
