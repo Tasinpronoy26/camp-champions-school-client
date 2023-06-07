@@ -2,7 +2,7 @@ import React from 'react';
 
 const ShareSection = ({heading, title, icon}) => {
     return (
-        <div className='text-center my-24 font-thin text-5xl'>
+        <div className='text-center mx-24 md:mx-0 my-24 font-thin text-5xl'>
 
             <h1>{heading}</h1>
             <div>

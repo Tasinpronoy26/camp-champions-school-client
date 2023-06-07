@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useSports from '../../../Hook/Hook';
 import PopularClasses from './PopularClasses/PopularClasses';
 import ShareSection from '../../../Share/ShareSection/ShareSection';
+import PopularInstructors from './PopularInstrutors/PopularInstructors';
 
 const Popular = () => {
 
@@ -21,10 +22,22 @@ const Popular = () => {
                 </ShareSection>
             </div>
 
-            <div className='grid md:grid-cols-3 gap-10'>
+            <div className='grid mx-24 md:mx-0 md:grid-cols-3 gap-10'>
 
                 {
                     popularClasses.map(classes => <PopularClasses classes={classes}></PopularClasses>)
+                }
+
+            </div>
+            <div>
+                <ShareSection heading="OUR INSTRUCTORS" title="A good teacher can inspire hope, ignite the imagination, and instill a love of learning.">
+
+                </ShareSection>
+            </div>
+            <div className='grid mx-24 md:mx-0 md:grid-cols-3 gap-10 mb-10'>
+
+                {
+                    popularClasses.map(classes => <PopularInstructors classes={classes}></PopularInstructors>)
                 }
 
             </div>

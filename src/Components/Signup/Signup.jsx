@@ -102,9 +102,9 @@ const Signup = () => {
 
 
 
-            <div className='md:mx-0 md:flex md:gap-48 hero-overlay bg-opacity-60 '>
+            <div className=' md:flex md:gap-48 hero-overlay bg-opacity-60 '>
 
-                <div className="card w-full max-w-sm ">
+                <div className="card w-full max-w-sm mx-auto md:mx-0">
 
                     <form onSubmit={handleRegister} className="card-body md:ms-24 md:w-full mt-16 mb-16">
                         <div className="form-control">
@@ -153,7 +153,7 @@ const Signup = () => {
 
 
 
-                <div className='mx-16 md:mt-64 md:mb-16 '>
+                <div className='mx-36 md:mx-16 md:mt-64 md:mb-16'>
 
                     <button onClick={handleGoogle} className="btn btn-wide"><FcGoogle></FcGoogle></button>
                     <button className="btn btn-wide mt-10 mb-10"><AiFillGithub></AiFillGithub></button>
