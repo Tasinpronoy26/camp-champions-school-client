@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import useSports from '../../../Hook/Hook';
 import PopularClasses from './PopularClasses/PopularClasses';
 import ShareSection from '../../../Share/ShareSection/ShareSection';
 import PopularInstructors from './PopularInstrutors/PopularInstructors';
+import ExtraSection from '../ExtraSection/ExtraSection';
+
 
 const Popular = () => {
 
@@ -10,7 +11,7 @@ const Popular = () => {
     // console.log(classes);
     const popularClasses = classes.filter(c => c.total_students > 5);
     // console.log(popularClasses);
-
+    
 
     return (
 
@@ -41,7 +42,6 @@ const Popular = () => {
                 }
 
             </div>
-
         </>
     );
 };

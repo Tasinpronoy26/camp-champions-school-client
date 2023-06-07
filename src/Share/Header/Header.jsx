@@ -31,7 +31,7 @@ const Header = () => {
     const navItems = <>
 
         <Link to="/"><li>Home</li></Link>
-        <Link><li>Instructors</li></Link>
+        <Link to="/instructors"><li>Instructors</li></Link>
         <Link><li>Classes</li></Link>
         {
             user ? <Link><li>Dashboard</li></Link> : <></> 

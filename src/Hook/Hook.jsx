@@ -7,14 +7,14 @@ const useSports = () => {
 
     useEffect(() => {
 
-        fetch('sports.json')
+        fetch('http://localhost:5000/sports')
             .then(res => res.json())
             .then(data => {
 
                 setClasses(data);
                 setLoading(false)
             })
-    }, [])
+    }, [ ])
     return [classes, loading]
 }
 

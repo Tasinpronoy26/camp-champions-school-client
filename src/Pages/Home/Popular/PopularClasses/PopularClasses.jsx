@@ -9,7 +9,7 @@ const PopularClasses = ({ classes }) => {
     return (
         <div>
 
-            <div className="card w-full rounded-none border">
+            <div className="card w-full rounded-none border hover:shadow-2xl">
                 <figure><img src={class_image} className='w-full h-64' alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title font-serif text-orange-600 md:flex justify-between">
