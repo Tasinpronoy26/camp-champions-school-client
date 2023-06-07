@@ -1,8 +1,60 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+
+    const { createLogIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogIn = event => {
+
+        event.preventDefault();
+
+        const form = event.target;
+
+        const email = form.email.value;
+        const password = form.password.value;
+
+        // console.log(email, password);
+
+        createLogIn(email, password)
+            .then(result => {
+
+                const user = result.user;
+                console.log(user);
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Signed in successfully'
+                })
+                navigate('/');
+            })
+
+            .catch(error => {
+
+                Swal.fire({
+                    title: 'warning!',
+                    text: error,
+                    icon: 'warning',
+            })})
+    }
+
+
+
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://images.pexels.com/photos/773063/pexels-photo-773063.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)' }}>
             <div className="hero-overlay bg-opacity-60 md:flex items-center justify-center gap-24">
@@ -20,26 +72,26 @@ const Login = () => {
 
                 {/* LOG IN FORM */}
                 <div>
-                    <div className="card-body md:w-96">
+                    <form onSubmit={handleLogIn} className="card-body md:w-96">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-white">Email</span>
                             </label>
-                            <input type="text" placeholder="email" className="input input-bordered" />
+                            <input type="text" placeholder="email" name='email' className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text  text-white">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" />
+                            <input type="password" placeholder="password" name='password' className="input input-bordered" />
                         </div>
                         <div className="form-control mt-6">
-                            <button className='btn-log-in'>
-                                Button
-                            </button>
+                            <input type='submit' className='btn btn-neutral'
+                                value="Log in"
+                            />
                         </div>
                         <p className='text-white tracking-tight mx-auto'>If You're new, Please<Link to="/signup"><span className=' text-orange-200 ms-2'>Sign Up</span></Link></p>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

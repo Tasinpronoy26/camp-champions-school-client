@@ -1,14 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Components/AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const userLogOut = () => {
+
+        logOut()
+            .then(() => {
+
+
+                Swal.fire({
+                    title: 'Log out!',
+                    icon: 'success'
+                })
+
+                navigate('/login')
+     
+            })
+            .catch(error => {
+
+                console.log(error);
+            })
+    }
 
     const navItems = <>
 
         <Link to="/"><li>Home</li></Link>
         <Link><li>Instructors</li></Link>
         <Link><li>Classes</li></Link>
-        <Link><li>Dashboard</li></Link>
+        {
+            user ? <Link><li>Dashboard</li></Link> : <></> 
+        }
 
     </>
 
@@ -45,18 +72,20 @@ const Header = () => {
             {/* Avater, Logout, Logins */}
             <div className="navbar-end">
 
-                <div className="dropdown dropdown-end">
-                    <label tabIndex={0}>
-                        <div className="avatar">
-                            <div className="w-12 rounded-full">
-                                <img src="https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                {
+                    user ? <div className="dropdown dropdown-end">
+                        <label tabIndex={0}>
+                            <div className="avatar">
+                                <div className="w-12 rounded-full">
+                                    <img src="https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                                </div>
                             </div>
-                        </div>
-                    </label>
-                    <ul tabIndex={0} className="text-black dropdown-content menu p-2 shadow bg-base-100 w-24">
-                        <li><a>Log Out</a></li>
-                    </ul>
-                </div>
+                        </label>
+                        <ul tabIndex={0} className="text-black dropdown-content menu p-2 shadow bg-base-100 w-24">
+                            <button onClick={userLogOut}>Log Out</button>
+                        </ul>
+                    </div> : <Link to="/login"><button className="btn rounded-none btn-outline btn-info">Log in</button></Link>
+                }
 
             </div>
         </div>
