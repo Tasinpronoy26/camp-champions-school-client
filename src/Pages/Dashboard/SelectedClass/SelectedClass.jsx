@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const SelectedClass = () => {
 
-    const [selectC, refetch] = useClasses();
+    const [selectC, refetch] = useClasses('');
 
     const handleDelete = (sc) => {
 
