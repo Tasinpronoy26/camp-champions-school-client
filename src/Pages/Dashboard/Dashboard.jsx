@@ -1,15 +1,27 @@
-import React from 'react';
 import useClasses from '../../Hook/useClasses/useClasses';
 import { Link, Outlet } from 'react-router-dom';
 import { SiGoogleclassroom } from "react-icons/si";
-import { BiSelectMultiple } from "react-icons/bi";
+import { BiSelectMultiple, BiUser } from "react-icons/bi";
 import { MdPayment } from "react-icons/md";
+import useRole from '../../Hook/useRole/useRole';
+
 
 
 const Dashboard = () => {
 
+
     const [selectC] = useClasses();
-    console.log(selectC);
+    
+    // console.log(selectC);
+
+    const [isAdmin] = useRole();
+    console.log(isAdmin);
+    
+
+
+
+    // TODO: 
+
 
     return (
         <div>
@@ -31,10 +43,53 @@ const Dashboard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content mt-[71px]">
-                        {/* Sidebar content here */}
-                        <Link to="/dashboard/selected"><li><a> <SiGoogleclassroom></SiGoogleclassroom> Selected Classes</a></li></Link>
-                        <li><a><BiSelectMultiple></BiSelectMultiple> Enrolled Classes</a></li>
-                        <li><a><MdPayment></MdPayment> Payment History</a></li>
+
+                        {
+                            isAdmin?.role ?  (
+                                <>
+                                    <Link to="/dashboard/manageclasses">
+                                        <li>
+                                            <a>
+                                                <SiGoogleclassroom />
+                                                Manage Classes
+                                            </a>
+                                        </li>
+                                    </Link>
+                                    <Link to="/dashboard/manageusers">
+                                        <li>
+                                            <a>
+                                                <BiUser />
+                                                Manage Users
+                                            </a>
+                                        </li>
+                                    </Link>
+                                </>
+                            ) : (
+                                <>
+                                    <Link to="/dashboard/selected">
+                                        <li>
+                                            <a>
+                                                <SiGoogleclassroom />
+                                                Selected Classes
+                                            </a>
+                                        </li>
+                                    </Link>
+                                    <li>
+                                        <a>
+                                            <BiSelectMultiple />
+                                            Enrolled Classes
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <MdPayment />
+                                            Payment History
+                                        </a>
+                                    </li>
+                                </>
+                            )
+                        }
+
                     </ul>
 
                 </div>
