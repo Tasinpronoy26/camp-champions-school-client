@@ -34,7 +34,7 @@ const Header = () => {
         <Link to="/instructors"><li>Instructors</li></Link>
         <Link to="/classes"><li>Classes</li></Link>
         {
-            user ? <Link><li>Dashboard</li></Link> : <></> 
+            user ? <Link to="/dashboard"><li>Dashboard</li></Link> : <></> 
         }
 
     </>
