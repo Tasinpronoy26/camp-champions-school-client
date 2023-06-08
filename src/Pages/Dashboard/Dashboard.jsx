@@ -10,13 +10,11 @@ import useRole from '../../Hook/useRole/useRole';
 const Dashboard = () => {
 
 
-    const [selectC] = useClasses();
-    
     // console.log(selectC);
 
     const [isAdmin] = useRole();
     console.log(isAdmin);
-    
+
 
 
 
@@ -45,7 +43,7 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content mt-[71px]">
 
                         {
-                            isAdmin?.role ?  (
+                            isAdmin?.role === 'admin' ? (
                                 <>
                                     <Link to="/dashboard/manageclasses">
                                         <li>
@@ -64,30 +62,52 @@ const Dashboard = () => {
                                         </li>
                                     </Link>
                                 </>
-                            ) : (
-                                <>
-                                    <Link to="/dashboard/selected">
+                            ) :
+
+                                isAdmin?.role === 'instructor' ? (
+                                    <>
+                                        <Link to="/dashboard/selected">
+                                            <li>
+                                                <a>
+                                                    <SiGoogleclassroom />
+                                                    Add a Class
+                                                </a>
+                                            </li>
+                                        </Link>
                                         <li>
                                             <a>
-                                                <SiGoogleclassroom />
-                                                Selected Classes
+                                                <BiSelectMultiple />
+                                                My Classes
                                             </a>
                                         </li>
-                                    </Link>
-                                    <li>
-                                        <a>
-                                            <BiSelectMultiple />
-                                            Enrolled Classes
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <MdPayment />
-                                            Payment History
-                                        </a>
-                                    </li>
-                                </>
-                            )
+
+                                    </>) : (<>
+                                        <Link to="/dashboard/selected">
+                                            <li>
+                                                <a>
+                                                    <SiGoogleclassroom />
+                                                    Selected Classes
+                                                </a>
+                                            </li>
+                                        </Link>
+                                        <li>
+                                            <a>
+                                                <BiSelectMultiple />
+                                                Enrolled Classes
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <MdPayment />
+                                                Payment History
+                                            </a>
+                                        </li>
+                                    </>
+                                )
+                        }
+
+                        {
+
                         }
 
                     </ul>
