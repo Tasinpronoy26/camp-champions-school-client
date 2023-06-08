@@ -6,6 +6,7 @@ import { AiFillGithub } from "react-icons/ai";
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { data } from 'autoprefixer';
 
 const Signup = () => {
 
@@ -34,14 +35,38 @@ const Signup = () => {
                 .then(result => {
 
                     const user = result.user;
-                    console.log(user);
-                    Swal.fire({
-                        title: 'Successfully created!',
-                        icon: 'success',
-                    })
+                    const userInfo = { name: user.name, email: user.email, photo: user.photoURL };
 
-                    form.reset();
+                    if (user) {
+                        fetch('http://localhost:5000/users', {
+
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                            },
+                            body: JSON.stringify(userInfo)
+                        })
+                            .then(res => res.json())
+                            .then(data => { console.log(data);
+
+
+                                if (data.insertedId) {
+
+                                    Swal.fire({
+                                        title: 'Successfully Sign Up',
+                                        icon: 'success',
+
+                                    })
+
+                                }
+
+                                navigate('/');
+                                form.reset();
+                            })
+                    }
+
                 })
+
                 .catch(error => {
                     Swal.fire({
 
@@ -50,8 +75,9 @@ const Signup = () => {
 
                     })
                 })
-            navigate('/');
+
         }
+
         else {
 
             Swal.fire({
@@ -75,17 +101,42 @@ const Signup = () => {
             .then(result => {
 
                 const user = result.user;
+                const userInfo = { name: user.displayName, email: user.email, photo: user.photoURL };
+
                 if (user) {
+                    fetch('http://localhost:5000/users',
 
-                    Swal.fire({
-                        title: 'Successfully log in!!',
-                        icon: 'success'
+                        {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                            },
+                            body: JSON.stringify(userInfo)
+                        })
 
-                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+
+                            if (data.insertedId) {
+
+                                Swal.fire({
+                                    title: 'Successfully log in!!',
+                                    icon: 'success'
+
+                                })
+
+                            }
+
+                            navigate('/');
+
+
+
+                        })
+
                 }
-                navigate('/');
-                console.log(result)
             })
+
             .catch(error => {
 
                 Swal.fire({
