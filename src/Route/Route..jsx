@@ -10,6 +10,8 @@ import Classes from "../Pages/Classes/Classes";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import SelectedClass from "../Pages/Dashboard/SelectedClass/SelectedClass";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import Payment from "../Pages/Dashboard/User/Payment.jsx/Payment";
+import DefaultDashboarc from "../Pages/Dashboard/DefaultDashboard/DefaultDashboarc";
 
 
 
@@ -45,12 +47,20 @@ const router = createBrowserRouter([
                 element: <Dashboard></Dashboard>,
                 children: [
                     {
+                        path: "/dashboard",
+                        element: <DefaultDashboarc></DefaultDashboarc>
+                    }, 
+                    {
                         path: "selected",
                         element: <SelectedClass></SelectedClass>
                     },
                     {
                         path: "manageusers",
                         element: <ManageUsers></ManageUsers>
+                    },
+                    {
+                        path: "payment",
+                        element: <Payment></Payment>
                     }
                 ]
 

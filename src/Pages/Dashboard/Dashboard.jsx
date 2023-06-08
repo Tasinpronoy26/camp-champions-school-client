@@ -13,7 +13,9 @@ const Dashboard = () => {
     // console.log(selectC);
 
     const [isAdmin] = useRole();
-    console.log(isAdmin);
+    
+
+    // console.log(isAdmin);
 
 
 
@@ -106,9 +108,7 @@ const Dashboard = () => {
                                 )
                         }
 
-                        {
 
-                        }
 
                     </ul>
 

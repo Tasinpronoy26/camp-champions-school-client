@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useClasses from '../../../Hook/useClasses/useClasses';
 import { MdPayment, MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../Components/AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const SelectedClass = () => {
 
-    const [selectC, refetch] = useClasses('');
+    const { user } = useContext(AuthContext);
+
+    const [selectC, refetch] = useClasses([]);
+    const filterSelectedData = selectC.filter(f => f.userEmail === user.email)
+    // console.log(selectC);
 
     const handleDelete = (sc) => {
 
@@ -71,7 +77,7 @@ const SelectedClass = () => {
 
 
                         {
-                            selectC.map((item, index) =>
+                            filterSelectedData.map((item, index) =>
 
 
                                 <tr key={item._id}>
@@ -81,7 +87,7 @@ const SelectedClass = () => {
                                     <td>{item.class_name}</td>
                                     <td>${item.price}</td>
                                     <td>{item.userEmail}</td>
-                                    <td ><MdPayment></MdPayment></td>
+                                    <td ><Link to="/dashboard/payment"><button className='btn btn-circle btn-warning'><MdPayment></MdPayment></button></Link></td>
                                     <td>
 
                                         <button onClick={() => handleDelete(item)} className="btn btn-circle btn-outline">

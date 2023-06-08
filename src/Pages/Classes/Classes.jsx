@@ -3,19 +3,12 @@ import useSports from '../../Hook/Hook';
 import { BiSelectMultiple } from "react-icons/bi";
 import ShareSection from '../../Share/ShareSection/ShareSection';
 import { AuthContext } from '../../Components/AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Classes = () => {
 
     const [classes] = useSports();
     const { user } = useContext(AuthContext);
-
-    // const allClasses = classes.map(c => console.log(c))
-    // const selectClass = allClasses.map(a => a)
-    // console.log(selectClass);
-
-    // console.log(allClasses);
-    // const selectedClass = allClasses[0];
-    // const { class_name, class_image, price } = c;
 
     const { _id, email } = user;
 
@@ -48,7 +41,13 @@ const Classes = () => {
                 .then(res => res.json())
                 .then(data => {
 
-                    console.log(data);
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 })
         }
     }
