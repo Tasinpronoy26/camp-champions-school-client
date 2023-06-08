@@ -31,7 +31,7 @@ const Popular = () => {
 
             </div>
             <div>
-                <ShareSection heading="OUR INSTRUCTORS" title="A good teacher can inspire hope, ignite the imagination, and instill a love of learning.">
+                <ShareSection heading="OUR POPULAR INSTRUCTORS" title="A good teacher can inspire hope, ignite the imagination, and instill a love of learning.">
 
                 </ShareSection>
             </div>

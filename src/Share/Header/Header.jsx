@@ -32,7 +32,7 @@ const Header = () => {
 
         <Link to="/"><li>Home</li></Link>
         <Link to="/instructors"><li>Instructors</li></Link>
-        <Link><li>Classes</li></Link>
+        <Link to="/classes"><li>Classes</li></Link>
         {
             user ? <Link><li>Dashboard</li></Link> : <></> 
         }

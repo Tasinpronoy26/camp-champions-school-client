@@ -1,14 +1,21 @@
 import useSports from '../../Hook/Hook';
+import ShareSection from '../../Share/ShareSection/ShareSection';
 
 const Instructors = () => {
     const [classes] = useSports();
     console.log(classes);
 
-    
+
 
 
     return (
-        <div className='p-24'>
+        <div className='p-24 md:p-8'>
+
+            <div>
+                <ShareSection heading="OUR INSTRUCTORS" title="A good teacher can inspire hope, ignite the imagination, and instill a love of learning.">
+
+                </ShareSection>
+            </div>
 
             {
                 classes.map(instructor =>
