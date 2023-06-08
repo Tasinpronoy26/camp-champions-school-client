@@ -48,10 +48,12 @@ const router = createBrowserRouter([
                         element: <SelectedClass></SelectedClass>
                     }
                 ]
+
+
             }
 
         ]
-    },
+    }
 ]);
 
 
