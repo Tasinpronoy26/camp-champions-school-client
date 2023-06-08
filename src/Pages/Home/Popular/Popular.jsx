@@ -2,7 +2,7 @@ import useSports from '../../../Hook/Hook';
 import PopularClasses from './PopularClasses/PopularClasses';
 import ShareSection from '../../../Share/ShareSection/ShareSection';
 import PopularInstructors from './PopularInstrutors/PopularInstructors';
-import ExtraSection from '../ExtraSection/ExtraSection';
+
 
 
 const Popular = () => {

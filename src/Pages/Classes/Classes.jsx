@@ -1,11 +1,57 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useSports from '../../Hook/Hook';
 import { BiSelectMultiple } from "react-icons/bi";
 import ShareSection from '../../Share/ShareSection/ShareSection';
+import { AuthContext } from '../../Components/AuthProvider/AuthProvider';
 
 const Classes = () => {
 
     const [classes] = useSports();
+    const { user } = useContext(AuthContext);
+
+    // const allClasses = classes.map(c => console.log(c))
+    // const selectClass = allClasses.map(a => a)
+    // console.log(selectClass);
+
+    // console.log(allClasses);
+    // const selectedClass = allClasses[0];
+    // const { class_name, class_image, price } = c;
+
+    const { _id, email } = user;
+
+    const handleSelectedClasses = selectedItem => {
+
+        console.log(selectedItem);
+
+        if (user && user.email) {
+
+            const { class_name, class_image, price } = selectedItem;
+
+            const classesItems = {
+                classId: _id,
+                class_name,
+                class_image,
+                price,
+                userEmail: email
+            };
+
+            fetch('http://localhost:5000/classes', {
+
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+
+                body: JSON.stringify(classesItems)
+            })
+
+                .then(res => res.json())
+                .then(data => {
+
+                    console.log(data);
+                })
+        }
+    }
 
 
     return (
@@ -34,7 +80,7 @@ const Classes = () => {
 
                             {/* <p>{c.instructor_email}</p> */}
                             <div className="card-actions mx-auto mt-5 md:mx-0 justify-end">
-                                <button className="btn bg-white border-none text-orange-400"> Select <BiSelectMultiple></BiSelectMultiple> </button>
+                                <button onClick={() => handleSelectedClasses(c)} className="btn bg-white border-none text-orange-400"> Select <BiSelectMultiple></BiSelectMultiple> </button>
                             </div>
                         </div>
                     </div>
