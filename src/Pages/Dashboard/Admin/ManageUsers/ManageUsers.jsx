@@ -1,17 +1,22 @@
-import { useQuery } from '@tanstack/react-query';
 import { FaUserShield } from "react-icons/fa";
-import React from 'react';
 import { MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import useUsers from '../../../../Hook/useUsers/useUsers';
 import useRole from '../../../../Hook/useRole/useRole';
 
+
+
+
 const ManageUsers = () => {
 
-    const [users, refetch] = useUsers();
+    const [isAdmin] = useRole();
 
+    const [users, refetch] = useUsers();
+  
 
     const handleRoleAdmin = user => {
+
+        console.log(user);
 
         Swal.fire({
             title: `Are you sure you want to make an admin to ${user.name}?`,
@@ -30,13 +35,14 @@ const ManageUsers = () => {
                     body: JSON.stringify({ role: 'admin' })
                 })
                     .then(res => res.json())
-                    .then(data => {
-                        if (data.modifiedCount > 0) {
+                    .then(data => { console.log(data);
+                        if (data.modifiedCount) {
                             refetch();
                             Swal.fire(
                                 `${user.name} is an admin now!!`,
                                 'success'
                             )
+                            
 
                         }
                     })
@@ -48,6 +54,8 @@ const ManageUsers = () => {
     }
 
     const handleRoleInstructor = user => {
+
+        console.log(user);
 
         Swal.fire({
             title: `Are you sure you want to make an instructor to ${user.name}?`,
@@ -63,7 +71,7 @@ const ManageUsers = () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ role: 'admin' })
+                    body: JSON.stringify({ role: 'instructors' })
                 })
                     .then(res => res.json())
                     .then(data => {
@@ -73,7 +81,7 @@ const ManageUsers = () => {
                                 `${user.name} is an instructor now!!`,
                                 'success'
                             )
-
+                           
                         }
                     })
             }
@@ -88,8 +96,6 @@ const ManageUsers = () => {
 
 
     }
-
-    const [isAdmin] = useRole();
 
     return (
         <div>
@@ -126,7 +132,8 @@ const ManageUsers = () => {
                                     <td>{item.role}</td>
                                     <td>
                                         {
-                                            isAdmin.role ?
+                                            isAdmin.role &&
+
                                                 <>
 
                                                     <div className="dropdown dropdown-top dropdown-end">
@@ -138,11 +145,7 @@ const ManageUsers = () => {
                                                     </div>
 
                                                 </>
-                                                :
-                                                <>
-                                                    <FaUserShield ></FaUserShield>
-
-                                                </>
+                                                
                                         }
                                     </td>
                                     <td>

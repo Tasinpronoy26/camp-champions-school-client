@@ -27,9 +27,10 @@ const Signup = () => {
                 .then(result => {
                     const user = result.user;
 
+                    const userInfo = { name: user.displayName, email: user.email, photo: user.photoURL };
+
                     updateDisplayProfile(name, photo)
                         .then(() => {
-                            const userInfo = { name: user.displayName, email: user.email, photo: user.photoURL };
 
                             fetch('http://localhost:5000/users', {
                                 method: 'POST',
@@ -40,6 +41,7 @@ const Signup = () => {
                             })
                                 .then(res => res.json())
                                 .then(data => {
+                                    console.log(data);
                                     if (data.insertedId) {
                                         Swal.fire({
                                             title: 'Successfully Sign Up',
@@ -73,6 +75,8 @@ const Signup = () => {
         }
     };
 
+    // GOOGLE
+
     const provider = new GoogleAuthProvider();
     const handleGoogle = () => {
         createUSerWithGoogle(provider)
@@ -89,6 +93,7 @@ const Signup = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
+                        console.log(data);
                         if (data.insertedId) {
                             Swal.fire({
                                 title: 'Successfully log in!!',
@@ -113,7 +118,7 @@ const Signup = () => {
             });
     };
 
-    
+
 
     // State to track whether the profile picture has been updated
     const [isProfilePictureUpdated, setProfilePictureUpdated] = useState(false);

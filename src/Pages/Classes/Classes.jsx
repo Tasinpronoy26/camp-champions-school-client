@@ -4,12 +4,14 @@ import { BiSelectMultiple } from "react-icons/bi";
 import ShareSection from '../../Share/ShareSection/ShareSection';
 import { AuthContext } from '../../Components/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import useUsers from '../../Hook/useUsers/useUsers';
 
 const Classes = () => {
 
     const [classes] = useSports();
-    const { user } = useContext(AuthContext);
-
+    
+    
+    const {user} = useContext(AuthContext);
     const { _id, email } = user;
 
     const handleSelectedClasses = selectedItem => {

@@ -68,7 +68,7 @@ const Dashboard = () => {
 
                                 isAdmin?.role === 'instructor' ? (
                                     <>
-                                        <Link to="/dashboard/selected">
+                                        <Link to="/dashboard/addclass">
                                             <li>
                                                 <a>
                                                     <SiGoogleclassroom />

@@ -12,6 +12,7 @@ import SelectedClass from "../Pages/Dashboard/SelectedClass/SelectedClass";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import Payment from "../Pages/Dashboard/User/Payment.jsx/Payment";
 import DefaultDashboarc from "../Pages/Dashboard/DefaultDashboard/DefaultDashboarc";
+import AddClass from "../Pages/Dashboard/Instructor/AddClass/AddClass";
 
 
 
@@ -61,7 +62,12 @@ const router = createBrowserRouter([
                     {
                         path: "payment",
                         element: <Payment></Payment>
-                    }
+                    },
+                    {
+                        path: "addclass",
+                        element: <AddClass></AddClass>
+                    },
+
                 ]
 
 
