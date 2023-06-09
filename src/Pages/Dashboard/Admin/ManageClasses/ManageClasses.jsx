@@ -1,7 +1,7 @@
 import React from 'react';
 import useSports from '../../../../Hook/Hook';
 import useRole from '../../../../Hook/useRole/useRole';
-import { MdDelete } from 'react-icons/md';
+
 
 const ManageClasses = () => {
 
@@ -12,6 +12,33 @@ const ManageClasses = () => {
     const handleApprove = c => {
            
          console.log(c);
+         fetch(`http://localhost:5000/classes/${c._id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({status : 'approved'})
+         })
+         .then(res => res.json())
+         .then(data => {
+            console.log(data);
+         })
+    }
+    
+    const handleDecline = d => {
+           
+         console.log(d);
+         fetch(`http://localhost:5000/classes/${d._id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({status : 'decline'})
+         })
+         .then(res => res.json())
+         .then(data => {
+            console.log(data);
+         })
     }
 
     return (
@@ -57,7 +84,7 @@ const ManageClasses = () => {
                                         <label tabIndex={0} className="btn m-1">Status</label>
                                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                             <button onClick={() => handleApprove(item)} className='btn btn-success mb-2'><li><a>Approve</a></li></button>
-                                            <button className='btn  btn-error'><li><a>Decline</a></li></button>      
+                                            <button onClick={() => handleDecline(item)} className='btn  btn-error'><li><a>Decline</a></li></button>      
                                      </ul>
                                     </div> </> 
                                     
@@ -66,12 +93,12 @@ const ManageClasses = () => {
                                     <> {item.status} </>}</td>
 
                                     <td>
-
+{/* 
                                         <button onClick={() => handleDelete(item)} className="btn btn-circle btn-outline">
 
                                             <MdDelete></MdDelete>
 
-                                        </button>
+                                        </button> */}
                                     </td>
                                 </tr>
                             )

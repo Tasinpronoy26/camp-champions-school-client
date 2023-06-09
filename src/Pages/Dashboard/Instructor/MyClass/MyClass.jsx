@@ -52,7 +52,13 @@ const MyClass = () => {
                                     <td>{item.instructor_email}</td>
                                     <td>${item.price}</td>
                                     <td>{item.available_seat}</td>
-                                    <td>{item.status}</td>
+                                    <td>{
+                                    
+                                    item.status === 'approved' ? <> <p className='bg-yellow-600 text-white'>approved</p> </> :
+                                    
+                                    item.status === 'decline' ? <><p className=' bg-red-800 text-white'>decline</p></> : <><p className=' bg-rose-950 text-white'>pending</p></>
+                                    
+                                    }</td>
 
                                     <td>
 
