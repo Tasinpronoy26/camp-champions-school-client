@@ -54,11 +54,11 @@ const SelectedClass = () => {
     return (
         <div>
 
-            <p className=' text-3xl font-bold italic mb-10'>TOTAL SELECTED : {selectC.length}</p>
+            <p className='text-3xl font-bold italic ms-2 mb-10'>TOTAL SELECTED : {filterSelectedData.length}</p>
 
-            <div className="w-full">
+            <div className="mx-3">
                 <table className="table w-full">
-                    <thead>
+                    <thead className='border text-white bg-black'>
                         <tr>
 
                             <th>#</th>

@@ -13,7 +13,7 @@ const Dashboard = () => {
     // console.log(selectC);
 
     const [isAdmin] = useRole();
-    
+
 
     // console.log(isAdmin);
 
@@ -30,9 +30,9 @@ const Dashboard = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
 
-                <div className="drawer-content mx-auto md:mx-4 my-28 items-center justify-center border p-8 md:p-24">
+                <div className="drawer-content  my-48  md:my-20 items-center justify-center md:ps-12 md:pt-0 ">
 
-                    <div>
+                    <div >
                         <Outlet></Outlet>
                     </div>
                     {/* Page content here */}
@@ -40,14 +40,14 @@ const Dashboard = () => {
 
 
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side border-r">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content mt-[71px]">
+                    <ul className="menu w-full h-full bg-base-200 text-base-content mt-[71px]">
 
                         {
                             isAdmin?.role === 'admin' ? (
                                 <>
-                                    <Link to="/dashboard/manageclasses">
+                                    <Link to="/dashboard/manageclass">
                                         <li>
                                             <a>
                                                 <SiGoogleclassroom />
@@ -76,12 +76,14 @@ const Dashboard = () => {
                                                 </a>
                                             </li>
                                         </Link>
-                                        <li>
-                                            <a>
-                                                <BiSelectMultiple />
-                                                My Classes
-                                            </a>
-                                        </li>
+                                        <Link to="/dashboard/myclass">
+                                            <li>
+                                                <a>
+                                                    <BiSelectMultiple />
+                                                    My Classes
+                                                </a>
+                                            </li>
+                                        </Link>
 
                                     </>) : (<>
                                         <Link to="/dashboard/selected">

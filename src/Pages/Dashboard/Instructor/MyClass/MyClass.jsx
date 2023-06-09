@@ -1,26 +1,25 @@
 import React from 'react';
 import useSports from '../../../../Hook/Hook';
-import useRole from '../../../../Hook/useRole/useRole';
+import { useContext } from 'react';
+import { AuthContext } from '../../../../Components/AuthProvider/AuthProvider';
 import { MdDelete } from 'react-icons/md';
 
-const ManageClasses = () => {
+const MyClass = () => {
 
-    const [classes] = useSports();
-    const [isAdmin] = useRole();
-    console.log(classes);
+    const { user } = useContext(AuthContext)
+    const [classes] = useSports()
+    const myClasses = classes.filter(c => c.instructor_email === user.email);
 
-    const handleApprove = c => {
-           
-         console.log(c);
-    }
+    console.log(myClasses);
 
     return (
-        <div className='me-20'>
-            <p className=' text-3xl font-bold italic mb-10'>TOTAL USERS: {classes.length}</p>
+        <div>
 
-            <div className="w-full">
-                <table className="table md:w-full">
-                    <thead className='text-center border bg-black text-white'>
+            <p className='text-3xl font-bold italic mb-10'>TOTAL ADD : {myClasses.length}</p>
+
+            <div className="md:me-8">
+                <table className="table text-center ">
+                    <thead className='border bg-black text-white'>
                         <tr>
 
                             <th>#</th>
@@ -28,10 +27,12 @@ const ManageClasses = () => {
                             <th>Class Name</th>
                             <th>Instructor Name</th>
                             <th>Instructor Email</th>
-                            <th>Details</th>
+                            <th>Price</th>
                             <th>Available Seat</th>
                             <th>Status</th>
                             <th></th>
+
+
 
                         </tr>
                     </thead>
@@ -39,7 +40,7 @@ const ManageClasses = () => {
 
 
                         {
-                            classes.map((item, index) =>
+                            myClasses.map((item, index) =>
 
 
                                 <tr key={item._id}>
@@ -51,19 +52,7 @@ const ManageClasses = () => {
                                     <td>{item.instructor_email}</td>
                                     <td>${item.price}</td>
                                     <td>{item.available_seat}</td>
-                                    <td>{isAdmin.role === 'admin' ? <>
-                                    
-                                    <div className="dropdown dropdown-top dropdown-end">
-                                        <label tabIndex={0} className="btn m-1">Status</label>
-                                        <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                            <button onClick={() => handleApprove(item)} className='btn btn-success mb-2'><li><a>Approve</a></li></button>
-                                            <button className='btn  btn-error'><li><a>Decline</a></li></button>      
-                                     </ul>
-                                    </div> </> 
-                                    
-                                    :
-                                    
-                                    <> {item.status} </>}</td>
+                                    <td>{item.status}</td>
 
                                     <td>
 
@@ -73,14 +62,29 @@ const ManageClasses = () => {
 
                                         </button>
                                     </td>
+
+
+
+
+
                                 </tr>
+
+
                             )
                         }
+
+
+
+
+
                     </tbody>
                 </table>
             </div>
+
+
+
         </div>
     );
 };
 
-export default ManageClasses;
+export default MyClass;

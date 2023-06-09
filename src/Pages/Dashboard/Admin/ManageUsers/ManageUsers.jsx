@@ -98,12 +98,12 @@ const ManageUsers = () => {
     }
 
     return (
-        <div>
-            <p className=' text-3xl font-bold italic mb-10'>TOTAL USERS: {users.length}</p>
+        <div className="md:mx-3">
+            <p className='text-3xl font-bold italic mb-10'>TOTAL USERS: {users.length}</p>
 
-            <div className="w-full">
+            <div>
                 <table className="table w-full">
-                    <thead>
+                    <thead className="text-center border bg-black text-white">
                         <tr>
 
                             <th>#</th>
@@ -111,12 +111,14 @@ const ManageUsers = () => {
                             <th>User Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th></th>
+                            <th></th>
 
 
 
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-center">
 
 
                         {
@@ -132,7 +134,7 @@ const ManageUsers = () => {
                                     <td>{item.role}</td>
                                     <td>
                                         {
-                                            isAdmin.role &&
+                                            isAdmin.role === 'admin' &&
 
                                                 <>
 

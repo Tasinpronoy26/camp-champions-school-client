@@ -13,6 +13,8 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import Payment from "../Pages/Dashboard/User/Payment.jsx/Payment";
 import DefaultDashboarc from "../Pages/Dashboard/DefaultDashboard/DefaultDashboarc";
 import AddClass from "../Pages/Dashboard/Instructor/AddClass/AddClass";
+import MyClass from "../Pages/Dashboard/Instructor/MyClass/MyClass";
+import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses/ManageClasses";
 
 
 
@@ -67,6 +69,14 @@ const router = createBrowserRouter([
                         path: "addclass",
                         element: <AddClass></AddClass>
                     },
+                    {
+                        path: "myclass",
+                        element: <MyClass></MyClass>
+                    },
+                    {
+                        path: "manageclass",
+                        element: <ManageClasses></ManageClasses>
+                    }
 
                 ]
 
