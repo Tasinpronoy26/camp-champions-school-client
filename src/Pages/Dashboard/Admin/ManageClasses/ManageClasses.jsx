@@ -1,44 +1,75 @@
 import React from 'react';
 import useSports from '../../../../Hook/Hook';
 import useRole from '../../../../Hook/useRole/useRole';
+import Swal from 'sweetalert2';
+import { Link, useNavigate } from 'react-router-dom';
+import { VscFeedback } from "react-icons/vsc";
+import { FcFeedback } from 'react-icons/fc';
 
 
 const ManageClasses = () => {
 
     const [classes] = useSports();
-    const [isAdmin] = useRole();
+    console.log(classes);
+    const [isAdmin, refetch] = useRole();
+    const navigate = useNavigate();
     console.log(classes);
 
     const handleApprove = c => {
-           
-         console.log(c);
-         fetch(`http://localhost:5000/classes/${c._id}`, {
+
+        console.log(c);
+        fetch(`http://localhost:5000/classes/${c._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({status : 'approved'})
-         })
-         .then(res => res.json())
-         .then(data => {
-            console.log(data);
-         })
+            body: JSON.stringify({ status: 'approved' })
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                console.log(data);
+                refetch();
+                Swal.fire({
+
+                    icon: 'success',
+                    title: 'APPROVED',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+
+
+            })
     }
-    
+
     const handleDecline = d => {
-           
-         console.log(d);
-         fetch(`http://localhost:5000/classes/${d._id}`, {
+
+        console.log(d);
+        fetch(`http://localhost:5000/classes/${d._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({status : 'decline'})
-         })
-         .then(res => res.json())
-         .then(data => {
-            console.log(data);
-         })
+            body: JSON.stringify({ status: 'decline' })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+
+                    refetch();
+                    // console.log(refetch);
+
+                    Swal.fire({
+
+                        icon: 'error',
+                        title: 'DECLINE',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+                }
+            })
     }
 
     return (
@@ -55,9 +86,10 @@ const ManageClasses = () => {
                             <th>Class Name</th>
                             <th>Instructor Name</th>
                             <th>Instructor Email</th>
-                            <th>Details</th>
+                            <th>Price</th>
                             <th>Available Seat</th>
                             <th>Status</th>
+                            <th></th>
                             <th></th>
 
                         </tr>
@@ -78,22 +110,27 @@ const ManageClasses = () => {
                                     <td>{item.instructor_email}</td>
                                     <td>${item.price}</td>
                                     <td>{item.available_seat}</td>
+                                    <td>{item.status}</td>
                                     <td>{isAdmin.role === 'admin' ? <>
-                                    
-                                    <div className="dropdown dropdown-top dropdown-end">
-                                        <label tabIndex={0} className="btn m-1">Status</label>
-                                        <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                            <button onClick={() => handleApprove(item)} className='btn btn-success mb-2'><li><a>Approve</a></li></button>
-                                            <button onClick={() => handleDecline(item)} className='btn  btn-error'><li><a>Decline</a></li></button>      
-                                     </ul>
-                                    </div> </> 
-                                    
-                                    :
-                                    
-                                    <> {item.status} </>}</td>
+
+                                        <div className="dropdown dropdown-top dropdown-end">
+                                            <label tabIndex={0} className="btn btn-xs bg-slate-600 text-white m-1">Status</label>
+                                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                                <button onClick={() => handleApprove(item)} className='btn btn-success mb-2'><li><a>Approve</a></li></button>
+                                                <button onClick={() => handleDecline(item)} className='btn  btn-error'><li><a>Decline</a></li></button>
+                                            </ul>
+                                        </div> </>
+
+                                        :
+
+                                        <> {item.status} </>}
+                                    </td>
+                                    <td>
+                                        {item.status === 'decline' ? <Link to="/dashboard/feedback/admin"><button className='btn btn-outline btn-circle btn-neutral'><FcFeedback></FcFeedback></button></Link> : <></>}
+                                    </td>
 
                                     <td>
-{/* 
+                                        {/* 
                                         <button onClick={() => handleDelete(item)} className="btn btn-circle btn-outline">
 
                                             <MdDelete></MdDelete>

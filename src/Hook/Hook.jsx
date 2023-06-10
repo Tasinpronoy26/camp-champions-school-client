@@ -14,8 +14,8 @@ const useSports = () => {
                 setClasses(data);
                 setLoading(false)
             })
-    }, [ ])
-    return [classes, loading]
+    }, [loading])
+    return [classes, loading, setClasses]
 }
 
 export default useSports;

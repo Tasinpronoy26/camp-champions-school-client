@@ -1,16 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useSports from '../../../../Hook/Hook';
 import { useContext } from 'react';
 import { AuthContext } from '../../../../Components/AuthProvider/AuthProvider';
 import { MdDelete } from 'react-icons/md';
+import Swal from 'sweetalert2';
+
 
 const MyClass = () => {
 
     const { user } = useContext(AuthContext)
-    const [classes] = useSports()
+    const [ classes, setClasses ] = useSports()
     const myClasses = classes.filter(c => c.instructor_email === user.email);
+    const [ remaining, setRemainning ] = useState();
 
-    console.log(myClasses);
+    // console.log(remaining);
+
+    // console.log(myClasses);
+
+    const handleMyClassDelete = (c) => {
+
+                    console.log(c);
+
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/sports/${c._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        console.log(data);
+
+                        if (data.deletedCount > 0) {
+                             
+                            
+
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+
+                            const totalRemaining = classes.filter(item => item._id !== c)
+                            console.log(totalRemaining);
+                            setRemainning(totalRemaining); 
+                        }
+                    })
+            }
+        })
+
+
+    }
 
     return (
         <div>
@@ -40,7 +88,8 @@ const MyClass = () => {
 
 
                         {
-                            myClasses.map((item, index) =>
+                            myClasses.map((item, index) => 
+                            
 
 
                                 <tr key={item._id}>
@@ -53,16 +102,16 @@ const MyClass = () => {
                                     <td>${item.price}</td>
                                     <td>{item.available_seat}</td>
                                     <td>{
-                                    
-                                    item.status === 'approved' ? <> <p className='bg-yellow-600 text-white'>approved</p> </> :
-                                    
-                                    item.status === 'decline' ? <><p className=' bg-red-800 text-white'>decline</p></> : <><p className=' bg-rose-950 text-white'>pending</p></>
-                                    
+
+                                        item.status === 'approved' ? <> <p className='bg-yellow-600 text-white'>approved</p> </> :
+
+                                            item.status === 'decline' ? <><p className=' bg-red-800 text-white'>decline</p></> : <><p className=' bg-rose-950 text-white'>pending</p></>
+
                                     }</td>
 
                                     <td>
 
-                                        <button onClick={() => handleDelete(item)} className="btn btn-circle btn-outline">
+                                        <button onClick={ () => handleMyClassDelete(item)} className="btn btn-circle btn-outline">
 
                                             <MdDelete></MdDelete>
 

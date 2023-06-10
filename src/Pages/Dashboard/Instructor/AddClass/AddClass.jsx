@@ -24,6 +24,7 @@ const AddClass = () => {
         const availableSeat = form.availableSeat.value;
         const price = form.price.value;
         const status = 'pending';
+        const feedback = 'null'
 
         const addClass = {
 
@@ -34,7 +35,8 @@ const AddClass = () => {
             quote: message,
             available_seat:availableSeat,
             price: price,
-            status
+            status,
+            feedback
         }
 
         console.log(addClass);
@@ -58,6 +60,8 @@ const AddClass = () => {
                     showConfirmButton: false,
                     timer: 1500
                   })
+
+                  form.reset();
             })
             .catch(error => {
 

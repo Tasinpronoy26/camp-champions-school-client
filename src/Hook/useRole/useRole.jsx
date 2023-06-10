@@ -7,7 +7,7 @@ const useRole = () => {
 
     const {user} = useContext(AuthContext);
 
-    const {  data: isAdmin=[], refetch } = useQuery({
+    const {  data: isAdmin=[], refetch  } = useQuery({
         queryKey: ['isAdmin', user?.email],
         queryFn: async () => {
 

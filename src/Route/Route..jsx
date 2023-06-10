@@ -15,6 +15,9 @@ import DefaultDashboarc from "../Pages/Dashboard/DefaultDashboard/DefaultDashboa
 import AddClass from "../Pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClass from "../Pages/Dashboard/Instructor/MyClass/MyClass";
 import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses/ManageClasses";
+import PrivateRoute from "./PrivateRoute";
+import Feedback from "../Pages/Dashboard/Instructor/Feedback/Feedback";
+import AdminFeedBack from "../Pages/Dashboard/Admin/AdminFeedBack/AdminFeedBack";
 
 
 
@@ -43,7 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/classes",
-                element: <Classes></Classes>
+                element: <PrivateRoute><Classes></Classes></PrivateRoute>
             },
             {
                 path: "/dashboard",
@@ -76,6 +79,14 @@ const router = createBrowserRouter([
                     {
                         path: "manageclass",
                         element: <ManageClasses></ManageClasses>
+                    },
+                    {
+                        path: "feedback",
+                        element: <Feedback></Feedback>
+                    },
+                    {
+                        path: "feedback/admin",
+                        element: <AdminFeedBack></AdminFeedBack>
                     }
 
                 ]

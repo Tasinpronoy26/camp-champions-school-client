@@ -1,9 +1,9 @@
-import useClasses from '../../Hook/useClasses/useClasses';
 import { Link, Outlet } from 'react-router-dom';
 import { SiGoogleclassroom } from "react-icons/si";
 import { BiSelectMultiple, BiUser } from "react-icons/bi";
 import { MdPayment } from "react-icons/md";
 import useRole from '../../Hook/useRole/useRole';
+import { VscFeedback } from "react-icons/vsc";
 
 
 
@@ -13,15 +13,9 @@ const Dashboard = () => {
     // console.log(selectC);
 
     const [isAdmin] = useRole();
+    
 
-
-    // console.log(isAdmin);
-
-
-
-
-    // TODO: 
-
+    
 
     return (
         <div>
@@ -45,6 +39,7 @@ const Dashboard = () => {
                     <ul className="menu w-full h-full bg-base-200 text-base-content mt-[71px]">
 
                         {
+
                             isAdmin?.role === 'admin' ? (
                                 <>
                                     <Link to="/dashboard/manageclass">
@@ -81,6 +76,14 @@ const Dashboard = () => {
                                                 <a>
                                                     <BiSelectMultiple />
                                                     My Classes
+                                                </a>
+                                            </li>
+                                        </Link>
+                                        <Link to="/dashboard/feedback">
+                                            <li>
+                                                <a>
+                                                    <VscFeedback />
+                                                   Feedback
                                                 </a>
                                             </li>
                                         </Link>
@@ -121,6 +124,7 @@ const Dashboard = () => {
 
 
         </div>
+    
     );
 };
 
