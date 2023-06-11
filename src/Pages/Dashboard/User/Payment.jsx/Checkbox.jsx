@@ -68,7 +68,7 @@ const Checkbox = ({ payment }) => {
             })
         }
 
-        const { paymentIntent, error:confirmError } = await stripe.confirmCardPayment(
+        const { paymentIntent,   error:confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
                 payment_method: {

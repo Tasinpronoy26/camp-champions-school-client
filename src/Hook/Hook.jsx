@@ -15,7 +15,7 @@ const useSports = () => {
                 setLoading(false)
             })
     }, [loading])
-    return [classes, loading, setClasses]
+    return [classes, loading]
 }
 
 export default useSports;

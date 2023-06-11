@@ -13,7 +13,7 @@ const useRole = () => {
 
             const res = await fetch(`http://localhost:5000/users/admin/${user?.email}`)
             const u = await res.json(); 
-            // console.log(u);  
+            console.log(u);  
             return u    
         }
       })
