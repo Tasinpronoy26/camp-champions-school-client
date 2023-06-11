@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Components/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import Checkbox from '../../Pages/Dashboard/User/Payment.jsx/Checkbox';
 
-const Header = () => {
+
+const Header = ({ toggleTheme, theme }) => {
 
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -20,7 +22,7 @@ const Header = () => {
                 })
 
                 navigate('/login')
-     
+
             })
             .catch(error => {
 
@@ -34,9 +36,8 @@ const Header = () => {
         <Link to="/instructors"><li>Instructors</li></Link>
         <Link to="/classes"><li>Classes</li></Link>
         {
-            user ? <Link to="/dashboard"><li>Dashboard</li></Link> : <></> 
+            user ? <Link to="/dashboard"><li>Dashboard</li></Link> : <></>
         }
-
     </>
 
 
@@ -69,10 +70,11 @@ const Header = () => {
                 </ul>
             </div>
 
-
             {/* Avater, Logout, Logins */}
             <div className="navbar-end">
 
+            <button onClick={toggleTheme} className="btn btn-xs rounded-none me-2">{theme === 'dark' ? 'White' : 'Dark'}</button>
+ 
                 {
                     user ? <div className="dropdown dropdown-end">
                         <label tabIndex={0}>
