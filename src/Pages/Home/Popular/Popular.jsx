@@ -9,7 +9,7 @@ const Popular = () => {
 
     const [classes] = useSports();
     // console.log(classes);
-    const popularClasses = classes.filter(c => c.total_students > 5).slice(0, 5);
+    const popularClasses = classes.filter(c => c.total_students > 5).slice(0, 6);
     // console.log(popularClasses);
     
 
