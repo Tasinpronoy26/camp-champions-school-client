@@ -6,7 +6,7 @@ const useUsers = () => {
 
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
+        const res = await fetch('https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/users')
         return res.json()
     })
 

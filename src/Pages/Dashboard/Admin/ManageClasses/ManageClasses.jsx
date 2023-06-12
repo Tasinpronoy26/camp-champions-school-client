@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import { VscFeedback } from "react-icons/vsc";
 import { FcFeedback } from 'react-icons/fc';
+import AdminFeedBack from '../AdminFeedBack/AdminFeedBack';
 
 
 const ManageClasses = () => {
@@ -18,7 +19,7 @@ const ManageClasses = () => {
     const handleApprove = c => {
 
         console.log(c);
-        fetch(`http://localhost:5000/classes/${c._id}`, {
+        fetch(`https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/classes/${c._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +47,7 @@ const ManageClasses = () => {
     const handleDecline = d => {
 
         console.log(d);
-        fetch(`http://localhost:5000/classes/${d._id}`, {
+        fetch(`https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/classes/${d._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -98,7 +99,7 @@ const ManageClasses = () => {
 
 
                         {
-                            classes.map((item, index) =>
+                            classes.map((item, index) => 
 
 
                                 <tr key={item._id}>
@@ -126,17 +127,10 @@ const ManageClasses = () => {
                                         <> {item.status} </>}
                                     </td>
                                     <td>
-                                        {item.status === 'decline' ? <Link to="/dashboard/feedback/admin"><button className='btn btn-outline btn-circle btn-neutral'><FcFeedback></FcFeedback></button></Link> : <></>}
+                                        {item.status === 'decline' ? <Link  to="/dashboard/feedback/admin"><button className='btn btn-outline btn-circle btn-neutral'><FcFeedback></FcFeedback></button></Link> : <></>}
                                     </td>
 
-                                    <td>
-                                        {/* 
-                                        <button onClick={() => handleDelete(item)} className="btn btn-circle btn-outline">
-
-                                            <MdDelete></MdDelete>
-
-                                        </button> */}
-                                    </td>
+                                    
                                 </tr>
                             )
                         }

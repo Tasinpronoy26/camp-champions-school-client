@@ -11,7 +11,7 @@ const useClasses = () => {
         queryKey: ['classes', user?.email],
         queryFn: async () => {
 
-            const res = await fetch('http://localhost:5000/classes')
+            const res = await fetch('https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/classes')
             return res.json();
         }
       })

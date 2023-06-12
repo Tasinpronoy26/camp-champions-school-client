@@ -7,7 +7,7 @@ const useSports = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:5000/sports')
+        fetch('https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/sports')
             .then(res => res.json())
             .then(data => {
 

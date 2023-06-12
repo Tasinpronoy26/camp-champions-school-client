@@ -4,15 +4,17 @@ import app from '../../Firebase/firebase.config';
 
 
 
+
 export const AuthContext = createContext();
 const auth = getAuth(app);
+
 
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState([]);
     const [loading, setLoading] = useState(true);
-
-
+    const [payPrice, setPayPrice] = useState(null);
+    
     // Login
 
     const createLogIn = (email, password) => {
@@ -83,7 +85,9 @@ const AuthProvider = ({ children }) => {
         createLogIn,
         logOut,
         createUSerWithGoogle,
-        updateDisplayProfile
+        updateDisplayProfile,
+        payPrice,
+        setPayPrice
 
     }
 

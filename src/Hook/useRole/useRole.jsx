@@ -11,9 +11,8 @@ const useRole = () => {
         queryKey: ['isAdmin', user?.email],
         queryFn: async () => {
 
-            const res = await fetch(`http://localhost:5000/users/admin/${user?.email}`)
+            const res = await fetch(`https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/users/admin/${user?.email}`)
             const u = await res.json(); 
-            console.log(u);  
             return u    
         }
       })

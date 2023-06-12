@@ -24,7 +24,7 @@ const ExtraSection = () => {
                         classes.map(q =>
 
 
-                            <div className="card w-96 bg-base-100 rounded-none border shadow-xl">
+                            <div key={q._id} className="card w-96 bg-base-100 rounded-none border shadow-xl">
                                 <div className="card-body">
                                     <div className="card-actions">
 

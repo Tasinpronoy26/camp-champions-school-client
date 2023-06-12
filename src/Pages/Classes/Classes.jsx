@@ -5,13 +5,21 @@ import ShareSection from '../../Share/ShareSection/ShareSection';
 import { AuthContext } from '../../Components/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import useRole from '../../Hook/useRole/useRole';
-import { key } from 'localforage';
+import Aos from 'aos';
+import 'aos/dist/aos.css'
+import { useEffect } from 'react';
 
 
 const Classes = () => {
 
     const [classes] = useSports();
     const [isAdmin] = useRole();
+
+    useEffect(() => {
+
+        Aos.init({ duration: 2000 })
+
+    }, [])
     
     const approved = classes.filter( ap => ap.status === "approved" )
     
@@ -36,7 +44,7 @@ const Classes = () => {
                 userEmail: email
             };
 
-            fetch('http://localhost:5000/classes', {
+            fetch('https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/classes', {
 
                 method: 'POST',
                 headers: {
@@ -75,7 +83,7 @@ const Classes = () => {
             {
                 approved.map((c,index) =>  
 
-                    <div key={index} className={`${ c.available_seat === '0' ? 'card bg-red-500 md:card-side border text-white rounded-none mb-5 hover:shadow-xl':'card md:card-side border rounded-none mb-5 hover:shadow-xl'}`}>
+                    <div data-aos="fade-right" key={index} className={`${ c.available_seat === '0' ? 'card bg-red-500 md:card-side border text-white rounded-none mb-5 hover:shadow-xl':'card md:card-side border rounded-none mb-5 hover:shadow-xl'}`}>
                         <figure><img src={c.class_image} className='md:mt-0 md:w-96 ms-0 mt-0 md:h-full' alt="Movie" /></figure>
                         <div className="card-body">
 

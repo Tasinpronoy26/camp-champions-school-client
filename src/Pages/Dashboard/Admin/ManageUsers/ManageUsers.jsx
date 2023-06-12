@@ -3,6 +3,9 @@ import { MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import useUsers from '../../../../Hook/useUsers/useUsers';
 import useRole from '../../../../Hook/useRole/useRole';
+import { useContext } from "react";
+import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
+import useClasses from "../../../../Hook/useClasses/useClasses";
 
 
 
@@ -12,6 +15,13 @@ const ManageUsers = () => {
     const [isAdmin] = useRole();
 
     const [users, refetch] = useUsers();
+    console.log(users);
+    const [selectC] = useClasses();
+    console.log(selectC);
+    
+    const {user} = useContext(AuthContext);
+
+    console.log(users);
   
 
     const handleRoleAdmin = user => {
@@ -27,7 +37,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                fetch(`https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/users/admin/${user._id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -66,7 +76,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                fetch(`https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/users/admin/${user._id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -91,11 +101,6 @@ const ManageUsers = () => {
 
     }
 
-
-    const handleDelete = item => {
-
-
-    }
 
     return (
         <div className="md:mx-3">
@@ -128,7 +133,7 @@ const ManageUsers = () => {
                                 <tr key={item._id}>
 
                                     <td>{index + 1}</td>
-                                    <td><img src={item.photo} className=' btn-circle w-12' alt="" /></td>
+                                    <td><img src={item.photo } className=' btn-circle w-12' alt="" /></td>
                                     <td>{item.name}</td>
                                     <td>{item.email}</td>
                                     <td>{item.role}</td>
@@ -150,14 +155,6 @@ const ManageUsers = () => {
                                                 
                                         }
                                     </td>
-                                    <td>
-                                        <button onClick={() => handleDelete(item)} className="btn btn-circle btn-outline">
-
-                                            <MdDelete></MdDelete>
-
-                                        </button>
-                                    </td>
-
 
                                 </tr>
 

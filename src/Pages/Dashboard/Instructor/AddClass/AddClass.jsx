@@ -41,7 +41,7 @@ const AddClass = () => {
 
         console.log(addClass);
 
-        fetch('http://localhost:5000/addclass', {
+        fetch('https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/addclass', {
 
             method: 'POST',
             headers: {

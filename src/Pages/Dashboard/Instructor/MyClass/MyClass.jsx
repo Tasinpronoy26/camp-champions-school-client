@@ -31,7 +31,7 @@ const MyClass = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/sports/${c._id}`, {
+                fetch(`https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/sports/${c._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

@@ -1,11 +1,20 @@
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 import React from 'react';
+import { useEffect } from 'react';
 
 const PopularInstructors = ({ classes }) => {
 
     const { class_image, class_name, total_students, instructor_name, instructor_image, instructor_email } = classes;
+    
+    useEffect(() => {
+
+        Aos.init({ duration: 2000 })
+
+    }, [])
 
     return (
-        <div className="card w-full image-full">
+        <div data-aos="fade-down" className="card w-full image-full">
             <figure><img src={class_image} /></figure>
             <div className="card-body">
                 <div className="avatar">

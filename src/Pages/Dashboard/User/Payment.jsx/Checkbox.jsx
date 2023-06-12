@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-
     useStripe,
     useElements,
     CardElement,
@@ -10,36 +9,25 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../../Components/AuthProvider/AuthProvider';
 
 const Checkbox = ({ payment }) => {
-
-    console.log(payment);
-    const [clientSecret, setClientSecret] = useState("");
+    const [clientSecret, setClientSecret] = useState('');
+    const stripe = useStripe();
+    const elements = useElements();
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
-
-        console.log(payment);
-          
-        
-        fetch('http://localhost:5000/create-payment-intent', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ items: [{ payment }] }),
+        fetch('https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/create-payment-intent', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ payment }),
         })
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
     }, []);
 
-    console.log(clientSecret);
-
-    const stripe = useStripe();
-    const elements = useElements();
-    const {user} = useContext(AuthContext);
-
     const handleCard = async (event) => {
-
         event.preventDefault();
 
         if (!stripe || !elements) {
-
             return;
         }
 
@@ -58,40 +46,38 @@ const Checkbox = ({ payment }) => {
             console.log('[error]', error);
             Swal.fire({
                 icon: 'info',
-                text: "INVALID",
-            })
+                text: 'INVALID',
+            });
         } else {
             console.log('[PaymentMethod]', paymentMethod);
             Swal.fire({
                 icon: 'success',
-                text: "SUCCESSFULLY PAID!",
-            })
+                text: 'SUCCESSFULLY PAID!',
+            });
         }
 
-        const { paymentIntent,   error:confirmError } = await stripe.confirmCardPayment(
-            clientSecret,
-            {
+        if (clientSecret) {
+            const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
                     card: card,
                     billing_details: {
                         email: user?.email || 'NO EMAIL',
-                        name: user?. displayName || 'NO NAME',
-                        photo: user?.photoURL || 'NO PHOTOT'
+                        name: user?.displayName || 'NO NAME',
+                        photo: user?.photoURL || 'NO PHOTO',
                     },
                 },
-            },
-        );
+            });
 
-        if(confirmError){
-            console.log(confirmError);
+            if (confirmError) {
+                console.log(confirmError);
+            }
+
+            console.log(payment);
         }
-
-        console.log(payment);
-    }
+    };
 
     return (
         <div>
-
             <form onSubmit={handleCard}>
                 <CardElement
                     options={{
@@ -113,7 +99,6 @@ const Checkbox = ({ payment }) => {
                     Pay
                 </button>
             </form>
-
         </div>
     );
 };

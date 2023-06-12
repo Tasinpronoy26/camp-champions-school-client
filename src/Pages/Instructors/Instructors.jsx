@@ -1,11 +1,20 @@
 import useSports from '../../Hook/Hook';
 import ShareSection from '../../Share/ShareSection/ShareSection';
+import React, { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 
 const Instructors = () => {
     const [classes] = useSports();
     const instrutor = classes.filter(i => i.status === 'approved') 
     console.log(classes);
 
+
+    useEffect(() => {
+
+        Aos.init({ duration: 2000 })
+
+    }, [])
 
 
 
@@ -21,7 +30,7 @@ const Instructors = () => {
             {
                 instrutor.map(i =>
 
-                    <div key={i._id} className="card md:card-side border rounded-none mb-5">
+                    <div key={i._id} data-aos="fade-left" className="card md:card-side border rounded-none mb-5">
                         <figure><img src={i.instructor_image} className='mt-5 md:mt-0 md:w-48 h-48 ms-5' alt="Movie" /></figure>
                         <div className="card-body">
                             <h2 className="card-title text-4xl text-orange-300">{i.instructor_name}</h2>

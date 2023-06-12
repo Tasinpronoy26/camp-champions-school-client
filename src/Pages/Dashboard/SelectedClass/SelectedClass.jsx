@@ -7,11 +7,13 @@ import { Link } from 'react-router-dom';
 
 const SelectedClass = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, payPrice, setPayPrice } = useContext(AuthContext);
+
 
     const [selectC, refetch] = useClasses([]);
+
     const filterSelectedData = selectC.filter(f => f.userEmail === user.email)
-    // console.log(selectC);
+    console.log(filterSelectedData);
 
     const handleDelete = (sc) => {
 
@@ -27,7 +29,7 @@ const SelectedClass = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/classes/${sc._id}`, {
+                fetch(`https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/classes/${sc._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -50,6 +52,13 @@ const SelectedClass = () => {
 
     }
 
+    // 
+
+    const handlePay = (item) => {
+
+        setPayPrice(item.price)
+                  
+    }
 
     return (
         <div>
@@ -87,7 +96,7 @@ const SelectedClass = () => {
                                     <td>{item.class_name}</td>
                                     <td>${item.price}</td>
                                     <td>{item.userEmail}</td>
-                                    <td ><Link to="/dashboard/payment"><button className='btn btn-circle btn-warning'><MdPayment></MdPayment></button></Link></td>
+                                    <td ><Link to="/dashboard/payment"><button onClick={() => handlePay(item)} className='btn btn-circle btn-warning'><MdPayment></MdPayment></button></Link></td>
                                     <td>
 
                                         <button onClick={() => handleDelete(item)} className="btn btn-circle btn-outline">

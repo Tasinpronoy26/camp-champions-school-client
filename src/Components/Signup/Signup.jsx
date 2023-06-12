@@ -7,6 +7,7 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { GoogleAuthProvider } from 'firebase/auth';
 
+
 const Signup = () => {
     const { createUser, createUSerWithGoogle, updateDisplayProfile } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Signup = () => {
                     updateDisplayProfile(name, photo)
                         .then(() => {
 
-                            fetch('http://localhost:5000/users', {
+                            fetch('https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/users', {
                                 method: 'POST',
                                 headers: {
                                     'content-type': 'application/json',
@@ -84,7 +85,7 @@ const Signup = () => {
                 const user = result.user;
                 const userInfo = { name: user.displayName, email: user.email, photo: user.photoURL };
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://camp-champions-school-server-tasinpronoy56-gmailcom.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
